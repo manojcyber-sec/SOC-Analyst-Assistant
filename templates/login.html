@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOC Assistant - Login</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #0a0e1a; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .login-box { background: #111827; border-radius: 12px; padding: 40px; width: 380px; border: 1px solid #1f2937; }
+        .login-title { color: #3b82f6; font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 6px; }
+        .login-sub { color: #9ca3af; font-size: 13px; text-align: center; margin-bottom: 30px; }
+        label { display: block; font-size: 13px; color: #9ca3af; margin-bottom: 6px; }
+        input { width: 100%; padding: 10px 14px; background: #1f2937; border: 1px solid #374151; border-radius: 6px; color: #fff; font-size: 14px; margin-bottom: 18px; outline: none; }
+        input:focus { border-color: #3b82f6; }
+        button { width: 100%; padding: 12px; background: #1a56db; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; }
+        button:hover { background: #1e40af; }
+        .error { background: #7f1d1d; color: #fca5a5; padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-bottom: 18px; text-align: center; }
+        .shield { font-size: 40px; text-align: center; margin-bottom: 16px; }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="shield">🛡️</div>
+        <div class="login-title">SOC Analyst Assistant</div>
+        <div class="login-sub">AI-Powered Incident Response Platform</div>
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method="POST">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="Enter username" required autofocus>
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password" required>
+            <button type="submit">Login to SOC Dashboard</button>
+        </form>
+    </div>
+</body>
+</html>

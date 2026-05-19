@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOC Analyst Assistant</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #0a0e1a; color: #ffffff; padding: 20px; }
+        .header { background: #111827; padding: 16px 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #3b82f6; display: flex; justify-content: space-between; align-items: center; }
+        .header h1 { color: #3b82f6; font-size: 20px; }
+        .header p { color: #9ca3af; font-size: 12px; margin-top: 3px; }
+        .header-right { display: flex; align-items: center; gap: 14px; }
+        .live-badge { background: #064e3b; color: #6ee7b7; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+        .live-dot { display: inline-block; width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-right: 5px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+        .logout-btn { background: #1f2937; color: #9ca3af; border: 1px solid #374151; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; text-decoration: none; }
+        .logout-btn:hover { color: #fff; }
+        .user-info { color: #9ca3af; font-size: 13px; }
+
+        .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+        .stat-card { background: #111827; padding: 14px; border-radius: 8px; text-align: center; }
+        .stat-card .number { font-size: 26px; font-weight: bold; margin-bottom: 4px; }
+        .stat-card .label { font-size: 11px; color: #9ca3af; }
+        .c-blue{color:#3b82f6} .c-red{color:#ef4444} .c-orange{color:#f97316} .c-yellow{color:#f59e0b} .c-green{color:#10b981}
+
+        .tabs { display: flex; gap: 4px; margin-bottom: 0; }
+        .tab { padding: 10px 20px; background: #1f2937; border-radius: 8px 8px 0 0; cursor: pointer; font-size: 13px; color: #9ca3af; border: none; }
+        .tab.active { background: #111827; color: #3b82f6; font-weight: bold; }
+        .panel { background: #111827; border-radius: 0 8px 8px 8px; overflow: hidden; }
+        .panel-header { padding: 14px 20px; font-size: 14px; border-bottom: 1px solid #1f2937; color: #e5e7eb; display: flex; justify-content: space-between; align-items: center; }
+        .refresh-info { font-size: 12px; color: #9ca3af; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #1f2937; padding: 10px 14px; text-align: left; font-size: 11px; color: #9ca3af; text-transform: uppercase; }
+        td { padding: 11px 14px; font-size: 13px; border-bottom: 1px solid #1f2937; }
+        tr:hover { background: #1a2235; }
+        .badge { padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: bold; }
+        .badge-critical { background: #450a0a; color: #fca5a5; }
+        .badge-high { background: #7f1d1d; color: #fca5a5; }
+        .badge-medium { background: #78350f; color: #fcd34d; }
+        .badge-low { background: #064e3b; color: #6ee7b7; }
+        .ip-link { color: #f87171; cursor: pointer; text-decoration: underline; }
+        .ip-link:hover { color: #fca5a5; }
+
+        .status-select { background: #1f2937; color: #e5e7eb; border: 1px solid #374151; border-radius: 4px; padding: 3px 6px; font-size: 11px; cursor: pointer; }
+        .status-open { border-color: #f59e0b; color: #fcd34d; }
+        .status-investigating { border-color: #3b82f6; color: #93c5fd; }
+        .status-closed { border-color: #10b981; color: #6ee7b7; }
+
+        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; overflow-y: auto; padding: 40px 20px; }
+        .modal-box { background: #111827; border-radius: 12px; padding: 28px; width: 640px; max-width: 100%; border: 1px solid #374151; margin: 0 auto; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-title { color: #3b82f6; font-size: 16px; font-weight: bold; }
+        .close-btn { background: #ef4444; border: none; color: white; font-size: 13px; font-weight: bold; cursor: pointer; border-radius: 6px; padding: 6px 14px; }
+        .intel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+        .intel-card { background: #1f2937; padding: 14px; border-radius: 8px; }
+        .intel-label { color: #60a5fa; font-size: 11px; font-weight: bold; margin-bottom: 10px; letter-spacing: 0.05em; }
+        .intel-row { font-size: 13px; margin-bottom: 7px; color: #9ca3af; }
+        .intel-row span { color: #e5e7eb; }
+        .ai-box { background: #1f2937; padding: 16px; border-radius: 8px; margin-top: 12px; }
+        .ai-label { color: #60a5fa; font-size: 11px; font-weight: bold; margin-bottom: 12px; letter-spacing: 0.05em; }
+        .ai-text { color: #e5e7eb; font-size: 13px; line-height: 1.8; white-space: pre-wrap; }
+        .threat-pill { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 13px; font-weight: bold; }
+        .loading { color: #9ca3af; font-size: 14px; text-align: center; padding: 30px 20px; line-height: 2.2; }
+        .download-btn { margin-top: 16px; width: 100%; padding: 12px; background: #1a56db; color: white; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; }
+        .download-btn:hover { background: #1e40af; }
+        .bf-badge { background: #450a0a; color: #fca5a5; padding: 2px 8px; border-radius: 10px; font-size: 10px; margin-left: 6px; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div>
+        <h1>🛡️ SOC Analyst Assistant</h1>
+        <p>AI-Powered Alert Triage &amp; Incident Response Platform</p>
+    </div>
+    <div class="header-right">
+        <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+        <span class="user-info">👤 {{ user }}</span>
+        <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+</div>
+
+<div class="stats">
+    <div class="stat-card"><div class="number c-blue" id="s-total">-</div><div class="label">Total Alerts</div></div>
+    <div class="stat-card"><div class="number c-red" id="s-critical">-</div><div class="label">Critical</div></div>
+    <div class="stat-card"><div class="number c-orange" id="s-high">-</div><div class="label">High</div></div>
+    <div class="stat-card"><div class="number c-yellow" id="s-medium">-</div><div class="label">Medium</div></div>
+    <div class="stat-card"><div class="number c-green" id="s-low">-</div><div class="label">Low</div></div>
+</div>
+
+<div class="tabs">
+    <button class="tab active" id="tab-btn-alerts" onclick="showTab('alerts',this)">Live Alert Feed</button>
+    <button class="tab" id="tab-btn-history" onclick="showTab('history',this)">Investigation History</button>
+</div>
+
+<div class="panel">
+    <div id="pane-alerts">
+        <div class="panel-header">
+            <span>Live Alert Feed</span>
+            <span class="refresh-info" id="refresh-info">Auto-refreshing every 30s</span>
+        </div>
+        <table>
+            <thead><tr><th>#</th><th>Timestamp</th><th>Event ID</th><th>Alert Type</th><th>Source IP</th><th>Username</th><th>Severity</th><th>Status</th></tr></thead>
+            <tbody id="alerts-body"><tr><td colspan="8" style="text-align:center;color:#9ca3af;padding:30px;">Loading alerts...</td></tr></tbody>
+        </table>
+    </div>
+
+    <div id="pane-history" style="display:none;">
+        <div class="panel-header">
+            <span>Investigation History</span>
+            <span class="refresh-info">Saved to database</span>
+        </div>
+        <table>
+            <thead><tr><th>#</th><th>IP</th><th>Alert Type</th><th>Threat Level</th><th>Country</th><th>Abuse Score</th><th>VT Malicious</th><th>Investigated At</th></tr></thead>
+            <tbody id="history-body"><tr><td colspan="8" style="text-align:center;color:#9ca3af;padding:30px;">Loading...</td></tr></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="modal" onclick="handleOverlay(event)">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-title">IP Investigation Report</div>
+            <button class="close-btn" onclick="closeModal()">&#10005; Close</button>
+        </div>
+        <div id="modal-content"><div class="loading">Loading...</div></div>
+    </div>
+</div>
+
+<script>
+var lastInv = null, lastAlert = null, refreshTimer = null, countdown = 30;
+
+function showTab(name, btn) {
+    document.getElementById('pane-alerts').style.display = name==='alerts'?'block':'none';
+    document.getElementById('pane-history').style.display = name==='history'?'block':'none';
+    document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+    btn.classList.add('active');
+    if (name==='history') loadHistory();
+}
+
+function loadAlerts() {
+    fetch('/api/alerts').then(function(r){return r.json();}).then(function(data){
+        document.getElementById('s-total').innerText = data.total;
+        document.getElementById('s-critical').innerText = data.critical||0;
+        document.getElementById('s-high').innerText = data.high;
+        document.getElementById('s-medium').innerText = data.medium;
+        document.getElementById('s-low').innerText = data.low;
+        var html = '';
+        data.alerts.forEach(function(a) {
+            var sev = (a.severity||'low').toLowerCase();
+            var statusClass = 'status-'+(a.status||'open').toLowerCase().replace(' ','');
+            var bfBadge = a.bf_count ? '<span class="bf-badge">'+a.bf_count+' attempts</span>' : '';
+            html += '<tr>';
+            html += '<td style="color:#6b7280;">'+a.id+'</td>';
+            html += '<td style="color:#9ca3af;">'+a.timestamp+'</td>';
+            html += '<td style="color:#60a5fa;">'+a.event_id+'</td>';
+            html += '<td>'+a.type+bfBadge+'</td>';
+            html += '<td class="ip-link" onclick="investigateIP(this)">'+a.source_ip+'</td>';
+            html += '<td style="color:#a78bfa;">'+a.username+'</td>';
+            html += '<td><span class="badge badge-'+sev+'">'+a.severity+'</span></td>';
+            html += '<td><select class="status-select '+statusClass+'" onchange="updateStatus(\''+a.id+'\',this.value,this)">';
+            ['Open','Investigating','Closed'].forEach(function(s){
+                html += '<option value="'+s+'"'+(a.status===s?' selected':'')+'>'+s+'</option>';
+            });
+            html += '</select></td>';
+            html += '</tr>';
+        });
+        document.getElementById('alerts-body').innerHTML = html || '<tr><td colspan="8" style="text-align:center;color:#9ca3af;padding:30px;">No alerts.</td></tr>';
+    }).catch(function(){
+        document.getElementById('alerts-body').innerHTML = '<tr><td colspan="8" style="text-align:center;color:#ef4444;padding:30px;">Failed to load.</td></tr>';
+    });
+}
+
+function updateStatus(id, status, el) {
+    el.className = 'status-select status-'+status.toLowerCase();
+    fetch('/update_status', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({id: id, status: status})
+    });
+}
+
+function loadHistory() {
+    fetch('/history').then(function(r){return r.json();}).then(function(data){
+        var lc = {'Critical':'#ef4444','High':'#f97316','Medium':'#f59e0b','Low':'#10b981'};
+        var html = '';
+        data.forEach(function(r){
+            var c = lc[r.threat_level]||'#9ca3af';
+            html += '<tr>';
+            html += '<td style="color:#6b7280;">'+r.id+'</td>';
+            html += '<td style="color:#f87171;">'+r.ip+'</td>';
+            html += '<td>'+r.alert_type+'</td>';
+            html += '<td><span style="color:'+c+';font-weight:bold;">'+r.threat_level+'</span></td>';
+            html += '<td>'+(r.country||'Unknown')+'</td>';
+            html += '<td style="color:#f87171;">'+(r.abuse_score||0)+'%</td>';
+            html += '<td style="color:#fcd34d;">'+(r.vt_malicious||0)+'</td>';
+            html += '<td style="color:#9ca3af;">'+r.investigated_at+'</td>';
+            html += '</tr>';
+        });
+        document.getElementById('history-body').innerHTML = html || '<tr><td colspan="8" style="text-align:center;color:#9ca3af;padding:30px;">No investigations yet.</td></tr>';
+    });
+}
+
+function investigateIP(td) {
+    var ip = td.innerText.trim();
+    var cells = td.parentElement.getElementsByTagName('td');
+    lastAlert = {
+        id: cells[0].innerText.trim(),
+        timestamp: cells[1].innerText.trim(),
+        event_id: cells[2].innerText.trim(),
+        type: cells[3].innerText.trim(),
+        source_ip: ip,
+        username: cells[5].innerText.trim(),
+        severity: cells[6].innerText.trim()
+    };
+    document.getElementById('modal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('modal-content').innerHTML = '<div class="loading">🔍 Querying VirusTotal and AbuseIPDB...<br>🤖 AI is analyzing the threat...<br>Please wait 5-10 seconds.</div>';
+    fetch('/investigate', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ip: ip, alert: lastAlert})
+    }).then(function(r){return r.json();}).then(function(data){
+        lastInv = data;
+        var abuse = data.abuseipdb||{}, vt = data.virustotal||{};
+        var lc = {'Critical':'#ef4444','High':'#f97316','Medium':'#f59e0b','Low':'#10b981'};
+        var color = lc[data.threat_level]||'#9ca3af';
+        var h = '';
+        h += '<span class="threat-pill" style="background:'+color+'22;color:'+color+';">'+(data.threat_level||'Unknown')+' Threat</span>';
+        h += '<span style="color:#9ca3af;font-size:13px;margin-left:12px;">IP: '+data.ip+'</span>';
+        h += '<div class="intel-grid">';
+        h += '<div class="intel-card"><div class="intel-label">ABUSEIPDB</div>';
+        h += '<div class="intel-row">Abuse Score: <span style="color:#f87171;font-weight:bold;">'+(abuse.abuse_score||0)+'%</span></div>';
+        h += '<div class="intel-row">Country: <span>'+(abuse.country||'Unknown')+'</span></div>';
+        h += '<div class="intel-row">ISP: <span>'+(abuse.isp||'Unknown')+'</span></div>';
+        h += '<div class="intel-row">Total Reports: <span style="color:#fcd34d;">'+(abuse.total_reports||0)+'</span></div>';
+        h += '<div class="intel-row">Last Reported: <span>'+(abuse.last_reported||'Never')+'</span></div>';
+        h += '<div class="intel-row">TOR Node: <span style="color:'+(abuse.is_tor?'#ef4444':'#10b981')+'">'+(abuse.is_tor?'Yes ⚠️':'No')+'</span></div></div>';
+        h += '<div class="intel-card"><div class="intel-label">VIRUSTOTAL</div>';
+        h += '<div class="intel-row">Malicious: <span style="color:#f87171;font-weight:bold;">'+(vt.malicious||0)+'</span></div>';
+        h += '<div class="intel-row">Suspicious: <span style="color:#fcd34d;">'+(vt.suspicious||0)+'</span></div>';
+        h += '<div class="intel-row">Harmless: <span style="color:#10b981;">'+(vt.harmless||0)+'</span></div>';
+        h += '<div class="intel-row">Reputation: <span>'+(vt.reputation||0)+'</span></div>';
+        h += '<div class="intel-row">Country: <span>'+(vt.country||'Unknown')+'</span></div>';
+        h += '<div class="intel-row">Owner: <span>'+(vt.owner||'Unknown')+'</span></div></div></div>';
+        h += '<div class="ai-box"><div class="ai-label">🤖 AI INVESTIGATION SUMMARY</div>';
+        h += '<div class="ai-text">'+(data.ai_summary||'No summary.')+'</div></div>';
+        h += '<button class="download-btn" onclick="downloadReport()">📄 Download Incident Report PDF</button>';
+        document.getElementById('modal-content').innerHTML = h;
+    }).catch(function(err){
+        document.getElementById('modal-content').innerHTML = '<p style="color:#ef4444;padding:20px;">Failed. Check API keys.<br>'+err.message+'</p>';
+    });
+}
+
+function downloadReport() {
+    if (!lastInv) return;
+    fetch('/report', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({alert: lastAlert, investigation: lastInv, ai_summary: lastInv.ai_summary})
+    }).then(function(r){return r.blob();}).then(function(blob){
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url; a.download = 'incident_report.pdf'; a.click();
+        window.URL.revokeObjectURL(url);
+    });
+}
+
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+function handleOverlay(e) { if (e.target.id==='modal') closeModal(); }
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+function startTimer() {
+    countdown = 30;
+    clearInterval(refreshTimer);
+    refreshTimer = setInterval(function(){
+        countdown--;
+        document.getElementById('refresh-info').innerText = 'Refreshing in '+countdown+'s';
+        if (countdown <= 0) { loadAlerts(); countdown = 30; }
+    }, 1000);
+}
+
+loadAlerts();
+startTimer();
+</script>
+</body>
+</html>

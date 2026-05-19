@@ -1,0 +1,502 @@
+[
+  {
+    "id": 40,
+    "timestamp": "2026-05-18 17:50:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "192.168.1.105",
+    "username": "admin",
+    "status": "Open"
+  },
+  {
+    "id": 30,
+    "timestamp": "2026-05-18 17:48:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "192.168.1.10",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 48,
+    "timestamp": "2026-05-18 17:46:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "45.33.32.156",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 21,
+    "timestamp": "2026-05-18 17:42:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "192.168.1.105",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 36,
+    "timestamp": "2026-05-18 17:35:12",
+    "event_id": "4625",
+    "type": "Failed Login",
+    "severity": "Medium",
+    "source_ip": "198.51.100.23",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 46,
+    "timestamp": "2026-05-18 17:33:12",
+    "event_id": "4625",
+    "type": "Failed Login",
+    "severity": "Medium",
+    "source_ip": "192.168.1.105",
+    "username": "root",
+    "status": "Open"
+  },
+  {
+    "id": 6,
+    "timestamp": "2026-05-18 17:32:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "198.51.100.23",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 32,
+    "timestamp": "2026-05-18 17:32:12",
+    "event_id": "4720",
+    "type": "New User Created",
+    "severity": "High",
+    "source_ip": "103.21.244.0",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 50,
+    "timestamp": "2026-05-18 17:32:12",
+    "event_id": "4625",
+    "type": "Failed Login",
+    "severity": "Medium",
+    "source_ip": "198.51.100.23",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 49,
+    "timestamp": "2026-05-18 17:31:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "192.168.1.105",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 24,
+    "timestamp": "2026-05-18 17:30:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "91.108.4.0",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 16,
+    "timestamp": "2026-05-18 17:29:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "192.168.1.105",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 31,
+    "timestamp": "2026-05-18 17:29:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "198.51.100.23",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 44,
+    "timestamp": "2026-05-18 17:29:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "192.168.1.10",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 5,
+    "timestamp": "2026-05-18 17:25:12",
+    "event_id": "4720",
+    "type": "New User Created",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 47,
+    "timestamp": "2026-05-18 17:21:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "45.33.32.156",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 34,
+    "timestamp": "2026-05-18 17:18:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "45.33.32.156",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 42,
+    "timestamp": "2026-05-18 17:12:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "185.220.101.45",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 20,
+    "timestamp": "2026-05-18 17:07:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 7,
+    "timestamp": "2026-05-18 17:06:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "91.108.4.0",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 15,
+    "timestamp": "2026-05-18 17:04:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "91.108.4.0",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 43,
+    "timestamp": "2026-05-18 17:01:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "185.220.101.45",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 27,
+    "timestamp": "2026-05-18 17:00:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "admin",
+    "status": "Open"
+  },
+  {
+    "id": 10,
+    "timestamp": "2026-05-18 16:49:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "root",
+    "status": "Open"
+  },
+  {
+    "id": 2,
+    "timestamp": "2026-05-18 16:42:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "103.21.244.0",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 33,
+    "timestamp": "2026-05-18 16:42:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "45.33.32.156",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 17,
+    "timestamp": "2026-05-18 16:40:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "45.33.32.156",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 39,
+    "timestamp": "2026-05-18 16:40:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "91.108.4.0",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 11,
+    "timestamp": "2026-05-18 16:39:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "185.220.101.45",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 38,
+    "timestamp": "2026-05-18 16:38:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "root",
+    "status": "Open"
+  },
+  {
+    "id": 26,
+    "timestamp": "2026-05-18 16:37:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "192.168.1.105",
+    "username": "root",
+    "status": "Open"
+  },
+  {
+    "id": 41,
+    "timestamp": "2026-05-18 16:34:12",
+    "event_id": "4625",
+    "type": "Failed Login",
+    "severity": "Medium",
+    "source_ip": "185.220.101.45",
+    "username": "admin",
+    "status": "Open"
+  },
+  {
+    "id": 22,
+    "timestamp": "2026-05-18 16:30:12",
+    "event_id": "4625",
+    "type": "Failed Login",
+    "severity": "Medium",
+    "source_ip": "192.168.1.105",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 3,
+    "timestamp": "2026-05-18 16:26:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "198.51.100.23",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 35,
+    "timestamp": "2026-05-18 16:26:12",
+    "event_id": "4720",
+    "type": "New User Created",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 28,
+    "timestamp": "2026-05-18 16:25:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "91.108.4.0",
+    "username": "admin",
+    "status": "Open"
+  },
+  {
+    "id": 9,
+    "timestamp": "2026-05-18 16:23:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "10.0.0.5",
+    "username": "admin",
+    "status": "Open"
+  },
+  {
+    "id": 18,
+    "timestamp": "2026-05-18 16:22:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "192.168.1.10",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 12,
+    "timestamp": "2026-05-18 16:20:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "185.220.101.45",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 19,
+    "timestamp": "2026-05-18 16:17:12",
+    "event_id": "4648",
+    "type": "Login With Explicit Credentials",
+    "severity": "High",
+    "source_ip": "103.21.244.0",
+    "username": "john.doe",
+    "status": "Open"
+  },
+  {
+    "id": 13,
+    "timestamp": "2026-05-18 16:10:12",
+    "event_id": "4720",
+    "type": "New User Created",
+    "severity": "High",
+    "source_ip": "192.168.1.10",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 14,
+    "timestamp": "2026-05-18 16:10:12",
+    "event_id": "4740",
+    "type": "Account Lockout",
+    "severity": "High",
+    "source_ip": "198.51.100.23",
+    "username": "guest",
+    "status": "Open"
+  },
+  {
+    "id": 37,
+    "timestamp": "2026-05-18 16:10:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "192.168.1.10",
+    "username": "root",
+    "status": "Open"
+  },
+  {
+    "id": 23,
+    "timestamp": "2026-05-18 16:06:12",
+    "event_id": "4720",
+    "type": "New User Created",
+    "severity": "High",
+    "source_ip": "185.220.101.45",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 45,
+    "timestamp": "2026-05-18 16:04:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "185.220.101.45",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 1,
+    "timestamp": "2026-05-18 16:03:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "198.51.100.23",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 8,
+    "timestamp": "2026-05-18 16:03:12",
+    "event_id": "4625",
+    "type": "Failed Login",
+    "severity": "Medium",
+    "source_ip": "45.33.32.156",
+    "username": "jane.smith",
+    "status": "Open"
+  },
+  {
+    "id": 4,
+    "timestamp": "2026-05-18 16:02:12",
+    "event_id": "4688",
+    "type": "Process Started",
+    "severity": "Low",
+    "source_ip": "192.168.1.105",
+    "username": "admin",
+    "status": "Open"
+  },
+  {
+    "id": 25,
+    "timestamp": "2026-05-18 16:00:12",
+    "event_id": "4720",
+    "type": "New User Created",
+    "severity": "High",
+    "source_ip": "103.21.244.0",
+    "username": "administrator",
+    "status": "Open"
+  },
+  {
+    "id": 29,
+    "timestamp": "2026-05-18 15:59:12",
+    "event_id": "4624",
+    "type": "Successful Login",
+    "severity": "Low",
+    "source_ip": "91.108.4.0",
+    "username": "john.doe",
+    "status": "Open"
+  }
+]
