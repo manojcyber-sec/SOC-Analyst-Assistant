@@ -265,7 +265,7 @@ SOC-Analyst-Assistant/
 **Badige Manoj Kumar**
 - B.Tech CSE (Cybersecurity) — Alliance University, Bangalore
 - GitHub: [@manojcyber-sec](https://github.com/manojcyber-sec)
-- LinkedIn: [Connect with me](https://linkedin.com/in/manojcyber-sec)
+- LinkedIn: [Connect with me](https://www.linkedin.com/in/manojkumarbadige/)
 
 ---
 
