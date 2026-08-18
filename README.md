@@ -1,4 +1,4 @@
-# 🛡️ SOC Analyst Assistant
+# SOC Analyst Assistant
 
 ### Security Alert Triage, Threat Intelligence & Incident Reporting
 
@@ -11,7 +11,7 @@ The project collects Windows security events, identifies suspicious authenticati
 
 ---
 
-## 🎯 Project Objective
+## Project Objective
 
 SOC analysts often need to investigate large numbers of security alerts and correlate information from different sources.
 
@@ -23,24 +23,24 @@ The goal is to build practical experience with security monitoring, alert invest
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
 | Feature | Description |
 |---|---|
-| 🔴 Security Alert Dashboard | Displays collected security alerts with severity and status |
-| 🪟 Windows Event Monitoring | Reads Windows security events for analysis |
-| 🔍 Brute-Force Detection | Identifies repeated failed authentication attempts |
-| 🌐 Threat Intelligence | Investigates IP addresses using VirusTotal and AbuseIPDB |
-| 🤖 AI-Assisted Investigation | Generates investigation summaries and recommended actions |
-| 📄 Incident Reporting | Generates PDF investigation reports |
-| 💾 Investigation History | Stores investigation results in SQLite |
-| 🔐 Authentication | Provides login-based access to the dashboard |
-| 📡 Log Ingestion | Supports receiving logs through an API endpoint |
-| 🧪 Sample Log Generation | Generates test logs for development and demonstration |
+| Security Alert Dashboard | Displays collected security alerts with severity and status |
+| Windows Event Monitoring | Reads Windows security events for analysis |
+| Brute-Force Detection | Identifies repeated failed authentication attempts |
+| Threat Intelligence | Investigates IP addresses using VirusTotal and AbuseIPDB |
+| AI-Assisted Investigation | Generates investigation summaries and recommended actions |
+| Incident Reporting | Generates PDF investigation reports |
+| Investigation History | Stores investigation results in SQLite |
+| Authentication | Provides login-based access to the dashboard |
+| Log Ingestion | Supports receiving logs through an API endpoint |
+| Sample Log Generation | Generates test logs for development and demonstration |
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```text
               Windows Security Events
